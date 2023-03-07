@@ -1,0 +1,11 @@
+import pexpect as px
+ch=px.spawn('ftp demo.wftpserver.com')
+ch.expect('Name .*:')
+ch.sendline('demo')
+ch.expect('Password:')
+ch.sendline('demo')
+ch.expect('ftp>')
+ch.sendline('ls')
+# ch.expect(px.EOF)
+print(ch.before)
+ch.close()
